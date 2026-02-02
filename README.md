@@ -82,7 +82,7 @@ cypher-shell -u neo4j -p neo4jpass -f /var/lib/neo4j/import/import.cypher
 
 ---
 
-## 6) Servicios:
+## 6) Servicios
 - MariaDB: localhost:3307 (usuario: air / pass: air, db: airnostrum_sql; root: root)
 - MongoDB: localhost:27018
 - Mongo Express (UI): http://localhost:8082
@@ -90,7 +90,7 @@ cypher-shell -u neo4j -p neo4jpass -f /var/lib/neo4j/import/import.cypher
 
 ---
 
-## 7) Fuentes:
+## 7) Fuentes
 Chatgpt: https://chatgpt.com/ Classroom: https://classroom.google.com/
 
 ---
