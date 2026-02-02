@@ -95,5 +95,5 @@ Chatgpt: https://chatgpt.com/ Classroom: https://classroom.google.com/
 
 ---
 
-## ✅ Conclusión
+## 8) Conclusión
 Este proyecto demuestra un flujo completo de migración de datos entre diferentes sistemas de bases de datos usando contenedores Docker, mostrando cómo combinar bases de datos relacionales (MariaDB), NoSQL orientadas a documentos (MongoDB) y grafos (Neo4j) de manera práctica y reproducible.
