@@ -1,0 +1,49 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: air_mariadb
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=airnostrum_sql
+      - MARIADB_USER=air
+      - MARIADB_PASSWORD=air
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mariadb/init:/docker-entrypoint-initdb.d:ro
+      - mariadb_data:/var/lib/mysql
+
+  mongodb:
+    image: mongo:7
+    container_name: air_mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  mongo-express:
+    image: mongo-express:1
+    container_name: air_mongo_express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH=false
+    ports:
+      - "8082:8081"
+    depends_on:
+      - mongodb
+
+  migrator:
+    image: python:3.11-slim
+    container_name: air_migrator
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - mariadb
+      - mongodb
+    command: ["bash","-lc","pip install -r requirements.txt && python scripts/migrate_to_mongo.py"]
+
+volumes:
+  mariadb_data:
+  mongo_data:
